@@ -31,6 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * 对于多个入口方法组合（例如：onRequest获取入参onResponse获取返回值）这种情况，需要重写 doBefore/doRequest/doThrow 自己控制流程
  * </p>
+ * todo 1
  *
  * @author zhaoyb1990
  */
@@ -63,6 +64,9 @@ public class DefaultEventListener implements EventListener {
         this.processor = processor;
     }
 
+    /**
+     * todo 2
+     */
     @Override
     public void onEvent(Event event) throws Throwable {
         try {
@@ -143,7 +147,7 @@ public class DefaultEventListener implements EventListener {
 
     /**
      * 处理before事件
-     *
+     * todo 4
      * @param event before事件
      */
     protected void doBefore(BeforeEvent event) throws ProcessControlException {
@@ -179,7 +183,7 @@ public class DefaultEventListener implements EventListener {
     /**
      * 初始化invocation
      * 放开给插件重写，可以初始化自定义的调用描述类型，模块不感知插件的类型
-     *
+     * todo 5
      * @param beforeEvent before事件
      * @return 一次调用
      */
@@ -218,6 +222,7 @@ public class DefaultEventListener implements EventListener {
         }
         invocation.setResponse(processor.assembleResponse(event));
         invocation.setEnd(System.currentTimeMillis());
+        // todo 6
         listener.onInvocation(invocation);
     }
 
@@ -271,7 +276,7 @@ public class DefaultEventListener implements EventListener {
      * 初始化上下文；
      * 只有entrance插件负责初始化和清理上下文
      * 子调用无需关心traceContext信息（多线程情况下由ttl负责copy和restore，单线程由entrance负责管理）
-     *
+     * todo 3
      * @param event 事件
      */
     protected void initContext(Event event) {
