@@ -49,7 +49,6 @@ public class DubboConsumerEventListener extends DefaultEventListener {
             dubboInvocation.setParameters(parameters);
             dubboInvocation.setVersion(parameters.get("version"));
             dubboInvocation.setParameterTypes(transformClass(parameterTypes));
-            // todo find a right way to get address and group
         } catch (Exception e) {
             LogUtil.error("error occurred when init dubbo invocation", e);
         }

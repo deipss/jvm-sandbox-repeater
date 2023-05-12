@@ -24,7 +24,7 @@ import java.util.List;
  * 2. 通过Hard code编码在module中，缺点是插件的使用需要跟module耦合起来
  * <p>
  * 暂时先采用方案2；后续再优化
- *
+ * todo load 3
  * @author zhaoyb1990
  */
 public class PluginClassRouting {
